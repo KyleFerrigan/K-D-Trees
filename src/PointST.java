@@ -15,7 +15,7 @@ public class PointST<Value> {
 
     // associate the value val with point p
     public void put(Point2D p, Value val){
-        
+
     }
 
     // value associated with point p

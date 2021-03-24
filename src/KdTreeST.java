@@ -1,19 +1,17 @@
+import java.util.ArrayList;
+
 public class KdTreeST<Value> {
 
-    // construct an empty symbol table of points
-    public KdTreeST() {
+    private ArrayList<Point2D> symTbl;
 
-    }
+    // construct an empty set of points
+    public KdTreeST(){ symTbl = new ArrayList<Point2D>(); }
 
     // is the symbol table empty?
-    public boolean isEmpty() {
-        return false;//todo change
-    }
+    public boolean isEmpty() { return symTbl.isEmpty(); }
 
-    // number of points public
-    int size() {
-        return 0; //todo change
-    }
+    // number of points
+    public int size() { return symTbl.size(); }
 
     // associate the value val with point p
     public void put(Point2D p, Value val){
