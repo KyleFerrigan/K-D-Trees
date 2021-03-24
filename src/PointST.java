@@ -27,6 +27,7 @@ public class PointST<Value> {
 
     // all points that are inside the rectangle (or on the boundary)
     public Iterable<Point2D> range(RectHV rect){
+        if (rect == null) throw new IllegalArgumentException("No Rectangle Found!");
         Iterable<Point2D> inRect = rbBST.keys();
         while (inRect.iterator().hasNext()){ //keep going until end of iterator
             if (!rect.contains(inRect.iterator().next())){ //if rectangle doesnt contain point
