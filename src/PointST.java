@@ -31,7 +31,7 @@ public class PointST<Value> {
         while (inRect.iterator().hasNext()){ //keep going until end of iterator
             Point2D pnt = inRect.iterator().next(); //store next point into pnt
             if (!rect.contains(pnt)){ //if rectangle doesnt contain point
-                inRect.iterator().remove(); //remove said point
+                inRect.iterator().remove(); //remove said point //todo error here due to not iterating properly
             }
         }
         return inRect; //return iterator that only contains points within rectangle

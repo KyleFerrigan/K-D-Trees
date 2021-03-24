@@ -15,13 +15,13 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public class RangeSearchVisualizer {
  
     public static void main(String[] args) throws FileNotFoundException {
-        File myFile = new File("input1M.txt");
+        File myFile = new File("input10.txt");
         Scanner input = new Scanner(myFile);
         
         // initialize the data structures with n points from file
         PointST<Integer> brute = new PointST<Integer>();
         KdTreeST<Integer> kdtree = new KdTreeST<Integer>();
-        for (int i = 0; input.hasNextLine(); i++) {
+        for (int i = 0; input.hasNext(); i++) {
             double x = input.nextDouble();
             double y = input.nextDouble();
             Point2D p = new Point2D(x, y);
