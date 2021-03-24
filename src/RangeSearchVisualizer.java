@@ -20,12 +20,12 @@ public class RangeSearchVisualizer {
         
         // initialize the data structures with n points from file
         PointST<Integer> brute = new PointST<Integer>();
-        KdTreeST<Integer> kdtree = new KdTreeST<Integer>();
+        //KdTreeST<Integer> kdtree = new KdTreeST<Integer>();
         for (int i = 0; input.hasNext(); i++) {
             double x = input.nextDouble();
             double y = input.nextDouble();
             Point2D p = new Point2D(x, y);
-            kdtree.put(p, i);
+            //kdtree.put(p, i);
             brute.put(p, i);
         }
  
@@ -85,10 +85,10 @@ public class RangeSearchVisualizer {
                 p.draw();
  
             // draw the range search results for k-d tree in blue
-            Draw.setPenRadius(0.02);
-            Draw.setPenColor(Draw.BLUE);
-            for (Point2D p : kdtree.range(rect))
-                p.draw();
+           // Draw.setPenRadius(0.02);
+           // Draw.setPenColor(Draw.BLUE);
+            //for (Point2D p : kdtree.range(rect))
+            //    p.draw();
  
             // display everything on screen
             Draw.show();

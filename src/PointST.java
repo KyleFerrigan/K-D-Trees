@@ -29,9 +29,11 @@ public class PointST<Value> {
     public Iterable<Point2D> range(RectHV rect){
         if (rect == null) throw new IllegalArgumentException("No Rectangle Found!");
         Iterable<Point2D> inRect = rbBST.keys();
-        while (inRect.iterator().hasNext()){ //keep going until end of iterator
-            if (!rect.contains(inRect.iterator().next())){ //if rectangle doesnt contain point
-                inRect.iterator().remove(); //remove said point //todo error here due to not iterating properly
+        Iterator i = inRect.iterator();
+        while (i.hasNext()){ // keep going until end of iterator
+            Point2D next = (Point2D) i.next();
+            if (!rect.contains(next)){ //if rectangle doesnt contain point
+                i.remove(); //remove said point //todo error here due to not iterating properly
             }
         }
         return inRect; //return iterator that only contains points within rectangle
