@@ -2,35 +2,35 @@ import java.util.*;
 
 public class PointST<Value> {
 
-    private ArrayList<Point2D> symTbl;
+    private RedBlackBST rbBST;
 
     // construct an empty set of points
-    public PointST(){ symTbl = new ArrayList<Point2D>(); }
+    public PointST(){ rbBST = new RedBlackBST(); }
 
     // is the symbol table empty?
-    public boolean isEmpty() { return symTbl.isEmpty(); }
+    public boolean isEmpty() { return rbBST.isEmpty(); }
 
     // number of points
-    public int size() { return symTbl.size(); }
+    public int size() { return rbBST.size(); }
 
     // associate the value val with point p
     public void put(Point2D p, Value val){
-
+        rbBST.put(p,val);
     }
 
     // value associated with point p
     public Value get(Point2D p){
-        return null;//todo change
+        return (Value) rbBST.get(p); //todo janky casting
     }
 
     // does the symbol table contain point p?
     public boolean contains(Point2D p){
-        return false; //todo change
+        return rbBST.contains(p);
     }
 
     // all points in the symbol table
     public Iterable<Point2D> points(){
-        return null; //todo change
+        return null;
     }
 
     // all points that are inside the rectangle (or on the boundary)
