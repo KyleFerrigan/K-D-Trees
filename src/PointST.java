@@ -29,8 +29,7 @@ public class PointST<Value> {
     public Iterable<Point2D> range(RectHV rect){
         Iterable<Point2D> inRect = rbBST.keys();
         while (inRect.iterator().hasNext()){ //keep going until end of iterator
-            Point2D pnt = inRect.iterator().next(); //store next point into pnt
-            if (!rect.contains(pnt)){ //if rectangle doesnt contain point
+            if (!rect.contains(inRect.iterator().next())){ //if rectangle doesnt contain point
                 inRect.iterator().remove(); //remove said point //todo error here due to not iterating properly
             }
         }
