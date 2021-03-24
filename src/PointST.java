@@ -17,7 +17,7 @@ public class PointST<Value> {
     public void put(Point2D p, Value val){ rbBST.put(p,val); }
 
     // value associated with point p
-    public Value get(Point2D p){ return (Value) rbBST.get(p); } //todo change janky casting if it doesn't work
+    public Value get(Point2D p){ return (Value) rbBST.get(p); }
 
     // does the symbol table contain point p?
     public boolean contains(Point2D p){ return rbBST.contains(p); }
@@ -33,7 +33,7 @@ public class PointST<Value> {
         while (i.hasNext()){ // keep going until end of iterator
             Point2D next = (Point2D) i.next();
             if (!rect.contains(next)){ //if rectangle doesnt contain point
-                i.remove(); //remove said point //todo error here due to not iterating properly
+                i.remove(); //remove said point
             }
         }
         return inRect; //return iterator that only contains points within rectangle
