@@ -14,7 +14,7 @@
  *  Have you taken (part of) this course before:
  *  Kyle: No; Patrick: No
  *  Hours to complete assignment (optional):
- *  
+ *
  ******************************************************************************/
 
 Programming Assignment 3: K-d Trees
