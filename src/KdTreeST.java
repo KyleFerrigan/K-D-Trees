@@ -1,5 +1,5 @@
 public class KdTreeST<Value> {
-    
+
     // construct an empty symbol table of points
     public KdTreeST() {
 
