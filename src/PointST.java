@@ -39,7 +39,17 @@ public class PointST<Value> {
 
     // a nearest neighbor of point p; null if the symbol table is empty
     public Point2D nearest(Point2D p){
-        return null; //todo
+        if (isEmpty() || p == null) throw new IllegalArgumentException("The Symbol Table is Empty!");
+        Point2D minP = null;
+        double dist, minDist = Double.MAX_VALUE;
+        for (Point2D neighbor: points()){
+            dist = p.distanceSquaredTo(neighbor);
+            if (dist < minDist){
+                minDist = dist;
+                minP = neighbor;
+            }
+        }
+        return minP;
     }
 
     // unit testing (required)
