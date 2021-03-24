@@ -16,7 +16,7 @@ public class KdTreeST<Value> {
     // construct an empty set of points
     public KdTreeST(){
         Node topNode = new Node();
-        size=1;
+        size++;
     }
 
     // is the symbol table empty?
