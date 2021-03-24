@@ -1,6 +1,7 @@
 public class PointST<Value> {
-    // construct an empty symbol table of points public
-    PointST() {
+
+    // construct an empty symbol table of points
+    public PointST() {
 
     }
 
@@ -41,7 +42,7 @@ public class PointST<Value> {
 
     // a nearest neighbor of point p; null if the symbol table is empty
     public Point2D nearest(Point2D p){
-        return null;
+        return null;//todo change
     }
 
     // unit testing (required)
