@@ -14,33 +14,32 @@ public class PointST<Value> {
     public int size() { return rbBST.size(); }
 
     // associate the value val with point p
-    public void put(Point2D p, Value val){
-        rbBST.put(p,val);
-    }
+    public void put(Point2D p, Value val){ rbBST.put(p,val); }
 
     // value associated with point p
-    public Value get(Point2D p){
-        return (Value) rbBST.get(p); //todo janky casting
-    }
+    public Value get(Point2D p){ return (Value) rbBST.get(p); } //todo change janky casting if it doesn't work
 
     // does the symbol table contain point p?
-    public boolean contains(Point2D p){
-        return rbBST.contains(p);
-    }
+    public boolean contains(Point2D p){ return rbBST.contains(p); }
 
     // all points in the symbol table
-    public Iterable<Point2D> points(){
-        return null;
-    }
+    public Iterable<Point2D> points(){ return rbBST.keys(); }
 
     // all points that are inside the rectangle (or on the boundary)
     public Iterable<Point2D> range(RectHV rect){
-        return null; //todo change
+        Iterable<Point2D> inRect = rbBST.keys();
+        while (inRect.iterator().hasNext()){ //keep going until end of iterator
+            Point2D pnt = inRect.iterator().next(); //store next point into pnt
+            if (!rect.contains(pnt)){ //if rectangle doesnt contain point
+                inRect.iterator().remove(); //remove said point
+            }
+        }
+        return inRect; //return iterator that only contains points within rectangle
     }
 
     // a nearest neighbor of point p; null if the symbol table is empty
     public Point2D nearest(Point2D p){
-        return null;//todo change
+        return null; //todo
     }
 
     // unit testing (required)
