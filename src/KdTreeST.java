@@ -82,6 +82,11 @@ public class KdTreeST<Value> {
     }
     
     // value associated with point p
+    public Value get(Point2D p){
+        if (p == null) throw new IllegalArgumentException("NULL");
+        return get(topNode, p);
+    }
+
     public Value get(Node n, Point2D p){
         if (n == null) return null; // Exit if the tree is empty or the end of the node
         if (p.equals(n.p)) return n.val; // If the point equals the point of the node, return its value
@@ -95,7 +100,8 @@ public class KdTreeST<Value> {
 
     // does the symbol table contain point p?
     public boolean contains(Point2D p){
-        
+        if (p == null) throw new IllegalArgumentException("NULL");
+        return get(p) != null;
     }
 
     // all points in the symbol table
