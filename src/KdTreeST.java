@@ -33,18 +33,18 @@ public class KdTreeST<Value> {
 
     // construct an empty set of points
     public KdTreeST(){
-        Node topNode = new Node();
-        size++;
+        topNode = null;
+        nodeAmnt = 0;
     }
 
     // is the symbol table empty?
     public boolean isEmpty() {
-        if (topNode.val == null) return true;
+        if (topNode == null) return true;
         else return false;
     }
 
     // number of points
-    public int size() { return size; }
+    public int size() { return nodeAmnt; }
 
     // associate the value val with point p
     public void put(Point2D p, Value val){ 
