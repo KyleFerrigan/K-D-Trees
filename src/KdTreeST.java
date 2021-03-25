@@ -25,7 +25,6 @@ public class KdTreeST<Value> {
 
     Node topNode;
     int nodeAmnt;
-    int depth = 0;
     double xmin;
     double ymin;
     double xmax;
