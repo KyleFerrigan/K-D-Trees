@@ -12,6 +12,10 @@ public class KdTreeST<Value> {
 
     Node topNode;
     int size = 0;
+    double xmin;
+    double ymin;
+    double xmax;
+    double ymax;
 
     // construct an empty set of points
     public KdTreeST(){
