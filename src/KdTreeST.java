@@ -80,8 +80,18 @@ public class KdTreeST<Value> {
         }
         return n;
     }
+    
     // value associated with point p
-    public Value get(Point2D p){  }
+    public Value get(Node n, Point2D p){
+        if (n == null) return null; // Exit if the tree is empty or the end of the node
+        if (p.equals(n.p)) return n.val; // If the point equals the point of the node, return its value
+        double comp; // comparable value
+        if (n.xCord) comp = Double.compare(p.x(), n.p.x()); // x-coordinate
+        else comp = Double.compare(p.y(), n.p.y()); // y-coordinate
+        if (comp < 0) return get(n.lb, p); // If the point is less than the point of the node, return left
+        else if (comp >= 0) return get(n.rt, p); // If the point is greater than the point of the node, return right
+        return n.val;
+    }
 
     // does the symbol table contain point p?
     public boolean contains(Point2D p){  }
