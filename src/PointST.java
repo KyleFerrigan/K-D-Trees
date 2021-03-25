@@ -42,11 +42,11 @@ public class PointST<Value> {
     // a nearest neighbor of point p; null if the symbol table is empty
     public Point2D nearest(Point2D p){
         if (isEmpty() || p == null) throw new IllegalArgumentException("The Symbol Table is Empty!");
-        Point2D minP = null;
-        double dist, minDist = Double.MAX_VALUE;
-        for (Point2D neighbor: points()){
+        Point2D minP = null; // Starting point for the minimum point
+        double dist, minDist = Double.MAX_VALUE; // Set the distance and mininmum distance to the max value a double can hold
+        for (Point2D neighbor: points()){ // For each point, use euclidean distance to the point
             dist = p.distanceSquaredTo(neighbor);
-            if (dist < minDist){
+            if (dist < minDist){ // If this distance is the shortest distance traveled, update minimum distance and set minimum point to be the current neighbor
                 minDist = dist;
                 minP = neighbor;
             }
