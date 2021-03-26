@@ -15,7 +15,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public class RangeSearchVisualizer {
  
     public static void main(String[] args) throws FileNotFoundException {
-        File myFile = new File("input10.txt");
+        File myFile = new File("input1M.txt");
         Scanner input = new Scanner(myFile);
         
         // initialize the data structures with n points from file
@@ -33,13 +33,7 @@ public class RangeSearchVisualizer {
         double x0 = 0.0, y0 = 0.0;      // initial endpoint of rectangle
         double x1 = 0.0, y1 = 0.0;      // current location of mouse
         boolean isDragging = false;     // is the user dragging a rectangle
- 
-        // draw the points
-        Draw.clear();
-        Draw.setPenColor(Draw.BLACK);
-        Draw.setPenRadius(0.01);
-        for (Point2D p : brute.points())
-            p.draw();
+
  
         // process query rectangle drawn by user
         Draw.enableDoubleBuffering();

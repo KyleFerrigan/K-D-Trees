@@ -12,7 +12,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
  
 public class NearestNeighborVisualizer {
     public static void main(String[] args) throws FileNotFoundException {
-        File myFile = new File("input10.txt");
+        File myFile = new File("input1M.txt");
         Scanner input = new Scanner(myFile);
  
         // initialize the two data structures with point from file
@@ -42,20 +42,20 @@ public class NearestNeighborVisualizer {
             for (Point2D p : brute.points()) {
                 p.draw();
             }
- 
-            // draw in red the nearest neighbor according to the brute-force algorithm
-            Draw.setPenRadius(0.03);
-            Draw.setPenColor(Draw.RED);
-            Point2D bruteNearest = brute.nearest(query);
-            if (bruteNearest != null) bruteNearest.draw();
-            Draw.setPenRadius(0.02);
- 
             // draw in blue the nearest neighbor according to the k-d tree algorithm
+            Draw.setPenRadius(0.03);
             Draw.setPenColor(Draw.BLUE);
             Point2D kdtreeNearest = kdtree.nearest(query);
             if (kdtreeNearest != null) kdtreeNearest.draw();
             Draw.show();
-            Draw.pause(20);
+
+            // draw in red the nearest neighbor according to the brute-force algorithm
+            Draw.setPenRadius(0.02);
+            Draw.setPenColor(Draw.RED);
+            Point2D bruteNearest = brute.nearest(query);
+            if (bruteNearest != null) bruteNearest.draw();
+            Draw.show();
+
         }
     }
 }
