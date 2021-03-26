@@ -40,28 +40,28 @@ public class NearestNeighborVisualizer {
             Point2D query = new Point2D(x, y);
  
             // draw all of the points
-            //Draw.clear();
-            //Draw.setPenColor(Draw.BLACK);
-            //Draw.setPenRadius(0.01);
-            //for (Point2D p : brute.points()) {
-            //    p.draw();
-            //}
+            Draw.clear();
+            Draw.setPenColor(Draw.BLACK);
+            Draw.setPenRadius(0.01);
+            for (Point2D p : brute.points()) {
+                p.draw();
+            }
 
             System.out.println("Before: "+kdST.elapsedTime());
 
             // draw in blue the nearest neighbor according to the k-d tree algorithm
-            //Draw.setPenRadius(0.02);
-            //Draw.setPenColor(Draw.BLUE);
+            Draw.setPenRadius(0.03);
+            Draw.setPenColor(Draw.BLUE);
             Point2D kdtreeNearest = kdtree.nearest(query);//comment this out to test brutenearest
             if (kdtreeNearest != null) kdtreeNearest.draw();//comment this out to test brutenearest
-            //Draw.show();
+            Draw.show();
 
             // draw in red the nearest neighbor according to the brute-force algorithm
-            //Draw.setPenRadius(0.03);
-            //Draw.setPenColor(Draw.RED);
+            Draw.setPenRadius(0.02);
+            Draw.setPenColor(Draw.RED);
             Point2D bruteNearest = brute.nearest(query);//comment this out to test kdtreenearest
             if (bruteNearest != null) bruteNearest.draw();//comment this out to test kdtreenearest
-            //Draw.show();
+            Draw.show();
 
             System.out.println("After: "+kdST.elapsedTime());
             count++;
