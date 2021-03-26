@@ -62,7 +62,7 @@ Note: more calls per second indicates better performance.
 /* *****************************************************************************
  *  Known bugs / limitations.
  **************************************************************************** */
-No known bugs
+No known bugs.
 
 /* *****************************************************************************
  *  Describe whatever help (if any) that you received.
@@ -75,7 +75,8 @@ Eman B gave a hint on the use of xmin, ymin, xmax, ymax. Made visualizing the as
 /* *****************************************************************************
  *  Describe any serious problems you encountered.                    
  **************************************************************************** */
-Had wrong colored nodes in boundary cases, but we were able to correct that mistake
+Had wrong colored nodes in boundary cases, but we were able to correct that mistake.
+The rectangle draw didn't work on Patrick's machine, so Kyle performed the needed testing.
 
 /* *****************************************************************************
  *  If you worked with a partner, give one
