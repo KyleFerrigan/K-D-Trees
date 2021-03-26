@@ -77,24 +77,21 @@ public class RangeSearchVisualizer {
             Draw.setPenColor(Draw.BLACK);
             Draw.setPenRadius();
             rect.draw();
- 
+
+
+            System.out.println("Before: "+kdST.elapsedTime());
             // draw the range search results for brute-force data structure in red
             //Draw.setPenRadius(0.03);
             //Draw.setPenColor(Draw.RED);
-            //Start Stopwatch here
-
-            //End stopwatch here
+            for (Point2D p : brute.range(rect))
+                p.draw();
 
             // draw the range search results for k-d tree in blue
             //Draw.setPenRadius(0.02);
             //Draw.setPenColor(Draw.BLUE);
+            for (Point2D p : kdtree.range(rect))
+                p.draw();
 
-            //Start stopwatch here
-            System.out.println("Before: "+kdST.elapsedTime());
-            //for (Point2D p : kdtree.range(rect))
-            //    p.draw();
-            for (Point2D p : brute.range(rect))
-               p.draw();
             System.out.println("After: "+kdST.elapsedTime());
             count++;
             System.out.println("Count: "+count);

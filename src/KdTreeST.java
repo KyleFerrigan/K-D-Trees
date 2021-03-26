@@ -144,7 +144,7 @@ public class KdTreeST<Value> {
                 tempnode = tempnode.rt;
                 getpointsinrange(aryL,tempnode,rect);
             }
-            else{//if inside x axis //todo look here if performance impact issue
+            else{//inside x axis
                 //keep going & check children
                 if (rect.contains(n.p)){
                     aryL.add(n.p);
@@ -161,6 +161,7 @@ public class KdTreeST<Value> {
                 }
             }
         }
+
         else if(!n.xCord){//y level
             if (rect.ymax()<tempnode.p.y()){//if above inside y axis yet go left
                 if (tempnode.lb == null){
@@ -176,7 +177,7 @@ public class KdTreeST<Value> {
                 tempnode = tempnode.rt;
                 getpointsinrange(aryL,tempnode,rect);
             }
-            else {//if inside y axis //todo look here if performance impact issue
+            else {//inside y axis
                 //keep going & check children
                 if (rect.contains(n.p)){
                     aryL.add(n.p);
@@ -232,6 +233,18 @@ public class KdTreeST<Value> {
 
     // unit testing (required)
     public static void main(String[] args){
+        PointST s = new PointST();
+        Object o = new Object();
+        Point2D p = new Point2D(5,3);
+        RectHV r = new RectHV(0,0,20,20);
 
+        System.out.println(s.isEmpty());
+        System.out.println(s.size());
+        s.put(p,o);
+        System.out.println(s.get(p));
+        System.out.println(s.contains(p));
+        System.out.println(s.points());
+        System.out.println(s.range(r));
+        System.out.println(s.nearest(p));
     }
 }

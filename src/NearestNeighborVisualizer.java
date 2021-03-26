@@ -29,10 +29,11 @@ public class NearestNeighborVisualizer {
         // process nearest neighbor queries
         Draw.enableDoubleBuffering();
 
+        //Testing variables for below
         int count = 0;
         Stopwatch kdST = new Stopwatch();
+
         while (true) {
- 
             // the location (x, y) of the mouse
             double x = Draw.mouseX();
             double y = Draw.mouseY();
@@ -47,27 +48,21 @@ public class NearestNeighborVisualizer {
             //}
 
             System.out.println("Before: "+kdST.elapsedTime());
+
             // draw in blue the nearest neighbor according to the k-d tree algorithm
             //Draw.setPenRadius(0.02);
             //Draw.setPenColor(Draw.BLUE);
-
-            //Start stopwatch here
-            Point2D kdtreeNearest = kdtree.nearest(query);
-            if (kdtreeNearest != null) kdtreeNearest.draw();
-            //Send stopwatch here
-
+            Point2D kdtreeNearest = kdtree.nearest(query);//comment this out to test brutenearest
+            if (kdtreeNearest != null) kdtreeNearest.draw();//comment this out to test brutenearest
             //Draw.show();
 
             // draw in red the nearest neighbor according to the brute-force algorithm
             //Draw.setPenRadius(0.03);
             //Draw.setPenColor(Draw.RED);
-
-            //Start stopwatch here
-            //Point2D bruteNearest = brute.nearest(query);
-            //if (bruteNearest != null) bruteNearest.draw();
-            //Stop stopwatch here
-
+            Point2D bruteNearest = brute.nearest(query);//comment this out to test kdtreenearest
+            if (bruteNearest != null) bruteNearest.draw();//comment this out to test kdtreenearest
             //Draw.show();
+
             System.out.println("After: "+kdST.elapsedTime());
             count++;
             System.out.println("Count: "+count);
