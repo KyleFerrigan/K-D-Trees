@@ -62,7 +62,7 @@ Note: more calls per second indicates better performance.
 /* *****************************************************************************
  *  Known bugs / limitations.
  **************************************************************************** */
-
+No known bugs
 
 /* *****************************************************************************
  *  Describe whatever help (if any) that you received.
@@ -70,27 +70,27 @@ Note: more calls per second indicates better performance.
  *  include any help from people (including classmates and friends) and 
  *  attribute them by name.
  **************************************************************************** */
-
+Eman B gave a hint on the use of xmin, ymin, xmax, ymax. Made visualizing the assignment easier.
 
 /* *****************************************************************************
  *  Describe any serious problems you encountered.                    
  **************************************************************************** */
-
+Had wrong colored nodes in boundary cases, but we were able to correct that mistake
 
 /* *****************************************************************************
  *  If you worked with a partner, give one
  *  sentence explaining what each of you contributed.
  **************************************************************************** */
+Kyle: constructors, range (and associated helper functions), points and dive (and associated helper functions).
 
-
-
+Patrick: nearest (and associated helper functions), put (and associated helper functions), and get (and associated helper functions).
 
 /* *****************************************************************************
  *  List any other comments here. Feel free to provide any feedback   
  *  on  how helpful the class meeting was and on how much you learned 
  *  from doing the assignment, and whether you enjoyed doing it.
  **************************************************************************** */
-
+The interactable rectangle draw feature is a nice change of pace to see in an assignment. Gave a new perspective on the code execution.
 
 
 /* *****************************************************************************
