@@ -126,13 +126,83 @@ public class KdTreeST<Value> {
         return allPoints;
     }
 
+    private ArrayList getpointsinrange(ArrayList aryL, Node n, RectHV rect){//get X points
+        if (n == null) throw new IllegalArgumentException("invalid node");
+        Node tempnode = n;
+        if (n.xCord){//x level
+            if (rect.xmax()<tempnode.p.x()){//if not inside x axis yet go left
+                if (tempnode.lb == null){
+                    return aryL;
+                }
+                tempnode = tempnode.lb;
+                getpointsinrange(aryL,tempnode,rect);
+            }
+            else if (rect.xmin()>tempnode.p.x()){//if not inside x axis yet go right
+                if (tempnode.rt == null){
+                    return aryL;
+                }
+                tempnode = tempnode.rt;
+                getpointsinrange(aryL,tempnode,rect);
+            }
+            else if (rect.contains(tempnode.p)){//if inside x axis
+                //keep going & check children
+                aryL.add(n.p);
+                if (tempnode.rt != null && tempnode.lb != null){
+                    aryL=getpointsinrange(aryL,tempnode.lb,rect);
+                    aryL=getpointsinrange(aryL,tempnode.rt,rect);
+                }
+                else if (tempnode.rt != null){
+                    aryL=getpointsinrange(aryL,tempnode.rt,rect);
+                }
+                else if (tempnode.lb != null){
+                    aryL=getpointsinrange(aryL,tempnode.lb,rect);
+                }
+            }
+        }
+        else if(!n.xCord){//y level
+            if (rect.ymax()<tempnode.p.y()){//if above inside y axis yet go left
+                if (tempnode.lb == null){
+                    return aryL;
+                }
+                tempnode = tempnode.lb;
+                getpointsinrange(aryL,tempnode,rect);
+            }
+            else if (rect.ymin()>tempnode.p.y()){//if not inside y axis yet go right
+                if (tempnode.rt == null){
+                    return aryL;
+                }
+                tempnode = tempnode = tempnode.rt;
+                getpointsinrange(aryL,tempnode,rect);
+            }
+            else if (rect.contains(n.p)) {//if inside y axis
+                //keep going & check children
+                aryL.add(n.p);
+                if (tempnode.rt != null && tempnode.lb != null){
+                    aryL=getpointsinrange(aryL,tempnode.lb,rect);
+                    aryL=getpointsinrange(aryL,tempnode.rt,rect);
+                }
+                else if (tempnode.rt != null){
+                    aryL=getpointsinrange(aryL,tempnode.rt,rect);
+                }
+                else if (tempnode.lb != null){
+                    aryL=getpointsinrange(aryL,tempnode.lb,rect);
+                }
+            }
+        }
+        return aryL;
+    }
+
     // all points that are inside the rectangle (or on the boundary)
     public Iterable<Point2D> range(RectHV rect){
-        return null;//todo change
+        if (rect == null) throw new IllegalArgumentException("No Rectangle Found!");
+        ArrayList inRange = new ArrayList();
+        inRange = getpointsinrange(inRange,topNode,rect);
+        return inRange;
     }
 
     // a nearest neighbor of point p; null if the symbol table is empty
     public Point2D nearest(Point2D p){
+
         return null;//todo change
     }
 
