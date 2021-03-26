@@ -241,6 +241,8 @@ public class KdTreeST<Value> {
         System.out.println(s.isEmpty());
         System.out.println(s.size());
         s.put(p,o);
+        System.out.println(s.isEmpty());
+        System.out.println(s.size());
         System.out.println(s.get(p));
         System.out.println(s.contains(p));
         System.out.println(s.points());
