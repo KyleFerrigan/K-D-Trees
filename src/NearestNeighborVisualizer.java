@@ -14,7 +14,7 @@ public class NearestNeighborVisualizer {
     public static void main(String[] args) throws FileNotFoundException {
         File myFile = new File("input1M.txt");
         Scanner input = new Scanner(myFile);
- 
+
         // initialize the two data structures with point from file
         PointST<Integer> brute = new PointST<Integer>();
         KdTreeST<Integer> kdtree = new KdTreeST<Integer>();
