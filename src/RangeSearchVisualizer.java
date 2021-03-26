@@ -11,7 +11,8 @@
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
- 
+
+
 public class RangeSearchVisualizer {
     public static void main(String[] args) throws FileNotFoundException {
         File myFile = new File("input1M.txt");
@@ -33,9 +34,14 @@ public class RangeSearchVisualizer {
         double x1 = 0.0, y1 = 0.0;      // current location of mouse
         boolean isDragging = false;     // is the user dragging a rectangle
 
- 
+        Stopwatch pST = new Stopwatch();
+
+
         // process query rectangle drawn by user
         Draw.enableDoubleBuffering();
+
+        int count = 0;
+        Stopwatch kdST = new Stopwatch();
         while (true) {
  
             // user starts to drag a rectangle
@@ -54,15 +60,16 @@ public class RangeSearchVisualizer {
             // user stops dragging the rectangle
             else if (!Draw.isMousePressed() && isDragging) {
                 isDragging = false;
+                kdST = new Stopwatch();
             }
  
  
             // draw the points
             Draw.clear();
-            Draw.setPenColor(Draw.BLACK);
-            Draw.setPenRadius(0.01);
-            for (Point2D p : brute.points())
-                p.draw();
+            //Draw.setPenColor(Draw.BLACK);
+            //Draw.setPenRadius(0.01);
+            //for (Point2D p : brute.points())
+            //    p.draw();
  
             // draw the rectangle
             RectHV rect = new RectHV(Math.min(x0, x1), Math.min(y0, y1),
@@ -72,20 +79,27 @@ public class RangeSearchVisualizer {
             rect.draw();
  
             // draw the range search results for brute-force data structure in red
-            Draw.setPenRadius(0.03);
-            Draw.setPenColor(Draw.RED);
-            for (Point2D p : brute.range(rect))
-                p.draw();
- 
+            //Draw.setPenRadius(0.03);
+            //Draw.setPenColor(Draw.RED);
+            //Start Stopwatch here
+
+            //End stopwatch here
+
             // draw the range search results for k-d tree in blue
-            Draw.setPenRadius(0.02);
-            Draw.setPenColor(Draw.BLUE);
-            for (Point2D p : kdtree.range(rect))
-                p.draw();
- 
+            //Draw.setPenRadius(0.02);
+            //Draw.setPenColor(Draw.BLUE);
+
+            //Start stopwatch here
+            System.out.println("Before: "+kdST.elapsedTime());
+            //for (Point2D p : kdtree.range(rect))
+            //    p.draw();
+            for (Point2D p : brute.range(rect))
+               p.draw();
+            System.out.println("After: "+kdST.elapsedTime());
+            count++;
+            System.out.println("Count: "+count);
             // display everything on screen
             Draw.show();
-            Draw.pause(20);
         }
     }
 }

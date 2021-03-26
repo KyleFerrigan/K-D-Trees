@@ -28,6 +28,9 @@ public class NearestNeighborVisualizer {
  
         // process nearest neighbor queries
         Draw.enableDoubleBuffering();
+
+        int count = 0;
+        Stopwatch kdST = new Stopwatch();
         while (true) {
  
             // the location (x, y) of the mouse
@@ -36,26 +39,38 @@ public class NearestNeighborVisualizer {
             Point2D query = new Point2D(x, y);
  
             // draw all of the points
-            Draw.clear();
-            Draw.setPenColor(Draw.BLACK);
-            Draw.setPenRadius(0.01);
-            for (Point2D p : brute.points()) {
-                p.draw();
-            }
+            //Draw.clear();
+            //Draw.setPenColor(Draw.BLACK);
+            //Draw.setPenRadius(0.01);
+            //for (Point2D p : brute.points()) {
+            //    p.draw();
+            //}
+
+            System.out.println("Before: "+kdST.elapsedTime());
             // draw in blue the nearest neighbor according to the k-d tree algorithm
-            Draw.setPenRadius(0.03);
-            Draw.setPenColor(Draw.BLUE);
+            //Draw.setPenRadius(0.02);
+            //Draw.setPenColor(Draw.BLUE);
+
+            //Start stopwatch here
             Point2D kdtreeNearest = kdtree.nearest(query);
             if (kdtreeNearest != null) kdtreeNearest.draw();
-            Draw.show();
+            //Send stopwatch here
+
+            //Draw.show();
 
             // draw in red the nearest neighbor according to the brute-force algorithm
-            Draw.setPenRadius(0.02);
-            Draw.setPenColor(Draw.RED);
-            Point2D bruteNearest = brute.nearest(query);
-            if (bruteNearest != null) bruteNearest.draw();
-            Draw.show();
+            //Draw.setPenRadius(0.03);
+            //Draw.setPenColor(Draw.RED);
 
+            //Start stopwatch here
+            //Point2D bruteNearest = brute.nearest(query);
+            //if (bruteNearest != null) bruteNearest.draw();
+            //Stop stopwatch here
+
+            //Draw.show();
+            System.out.println("After: "+kdST.elapsedTime());
+            count++;
+            System.out.println("Count: "+count);
         }
     }
 }
