@@ -104,9 +104,26 @@ public class KdTreeST<Value> {
         return get(p) != null;
     }
 
+    // all points in the symbol table helper
+    private ArrayList<Point2D> dive(Node tempnode, ArrayList<Point2D> allPoints){
+        while (tempnode != null){
+            allPoints.add(tempnode.p);
+            if (tempnode.lb != null){
+                allPoints=dive(tempnode.lb,allPoints);
+            }
+            if (tempnode.rt != null){
+                allPoints = dive(tempnode.rt,allPoints);
+            }
+        }
+        return allPoints;
+    }
+
     // all points in the symbol table
     public Iterable<Point2D> points(){
-
+        ArrayList<Point2D> allPoints = null;
+        Node tempNode = topNode;
+        allPoints = dive(tempNode,allPoints);
+        return allPoints;
     }
 
     // all points that are inside the rectangle (or on the boundary)
