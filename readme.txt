@@ -24,16 +24,16 @@ Programming Assignment 3: K-d Trees
  *  Describe the Node data type you used to implement the
  *  2d-tree data structure.
  **************************************************************************** */
-
+We need to store the point, symbol table value, the axix-aligned rectangle, the left/bottom subtree, the right/top subtree, and the x and y coordinate (boolean).
 /* *****************************************************************************
  *  Describe your method for range search in a k-d tree.
  **************************************************************************** */
-
+By using an ArrayList of points, we need to recursively check to see which x or y level we are in and return the appropiate array list. If we are in the x-coordinate, we check the rectangle's min and max x value against the temporary traversal node. If the left/bottom or right/top ever points to null, then we can return the array list and update the temporary node appropiately. Else, we call contains and add the point to the array list if needed, else if we are checking to see which of the temporary nodes are not null. If so we update the array list to recursively call the range search again. The same is done if we are in the y-coordinate instead.
 
 /* *****************************************************************************
  *  Describe your method for nearest neighbor search in a k-d tree.
  **************************************************************************** */
-
+Recursively check the node and the nearest node's points and perform comparisons. If we are at the last node, then we have already found the nearest point. If the node's point is less than the nearest point, then we just set nearest to the node's point. If the nearest rectangle point is closer than the nearest point, then we can return nearest. Otherwise, we need to find the nearest by checking the x and y coordinates. This is where the recursion is done.
 
 /* *****************************************************************************
  *  How many nearest-neighbor calculations can your PointST implementation
