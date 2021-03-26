@@ -128,12 +128,12 @@ public class KdTreeST<Value> {
 
     // all points that are inside the rectangle (or on the boundary)
     public Iterable<Point2D> range(RectHV rect){
-
+        return null;//todo change
     }
 
     // a nearest neighbor of point p; null if the symbol table is empty
     public Point2D nearest(Point2D p){
-
+        return null;//todo change
     }
 
     // unit testing (required)
