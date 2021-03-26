@@ -52,9 +52,9 @@ Recursively check the node and the nearest node's points and perform comparisons
                  # calls to         /   CPU time     =   # calls to nearest()
                  client nearest()       (seconds)        per second
                 ------------------------------------------------------
-PointST:
+PointST:        8                      1.027            7.7
 
-KdTreeST:
+KdTreeST:       116852                  1.00            116852
 
 Note: more calls per second indicates better performance.
 
