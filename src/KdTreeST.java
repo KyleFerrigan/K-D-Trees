@@ -144,9 +144,11 @@ public class KdTreeST<Value> {
                 tempnode = tempnode.rt;
                 getpointsinrange(aryL,tempnode,rect);
             }
-            else if (rect.contains(tempnode.p)){//if inside x axis
+            else{//if inside x axis //todo look here if performance impact issue
                 //keep going & check children
-                aryL.add(n.p);
+                if (rect.contains(n.p)){
+                    aryL.add(n.p);
+                }
                 if (tempnode.rt != null && tempnode.lb != null){
                     aryL=getpointsinrange(aryL,tempnode.lb,rect);
                     aryL=getpointsinrange(aryL,tempnode.rt,rect);
@@ -171,12 +173,14 @@ public class KdTreeST<Value> {
                 if (tempnode.rt == null){
                     return aryL;
                 }
-                tempnode = tempnode = tempnode.rt;
+                tempnode = tempnode.rt;
                 getpointsinrange(aryL,tempnode,rect);
             }
-            else if (rect.contains(n.p)) {//if inside y axis
+            else {//if inside y axis //todo look here if performance impact issue
                 //keep going & check children
-                aryL.add(n.p);
+                if (rect.contains(n.p)){
+                    aryL.add(n.p);
+                }
                 if (tempnode.rt != null && tempnode.lb != null){
                     aryL=getpointsinrange(aryL,tempnode.lb,rect);
                     aryL=getpointsinrange(aryL,tempnode.rt,rect);
