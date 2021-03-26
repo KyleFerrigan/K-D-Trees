@@ -87,7 +87,7 @@ public class KdTreeST<Value> {
         return get(topNode, p);
     }
 
-    public Value get(Node n, Point2D p){
+    private Value get(Node n, Point2D p){
         if (n == null) return null; // Exit if the tree is empty or the end of the node
         if (p.equals(n.p)) return n.val; // If the point equals the point of the node, return its value
         double comp; // comparable value
@@ -206,8 +206,28 @@ public class KdTreeST<Value> {
 
     // a nearest neighbor of point p; null if the symbol table is empty
     public Point2D nearest(Point2D p){
+        if (isEmpty() || p == null) throw new IllegalArgumentException("The Symbol Table is Empty!");
+        return nearest(topNode, p, topNode.p, true);
+    }
 
-        return null;//todo change
+    private Point2D nearest(Node n, Point2D p, Point2D q, boolean xCord){
+        Point2D nearest = q; // adjusted point for recursive comparison
+        if (n == null) return nearest; // If we are at the last node, we are already at the nearest point
+        if (n.p.distanceSquaredTo(p) < nearest.distanceSquaredTo(p)) nearest = n.p; // Set the nearest point to the node's point
+        if (n.rect.distanceSquaredTo(p) < nearest.distanceSquaredTo(p)){ // If the nearest point is closer than the next point, we just return nearest. Otherwise, we need to find the nearest
+            double comp; // comparable value
+            if (n.xCord) comp = Double.compare(p.x(), n.p.x()); // x-coordinate
+            else comp = Double.compare(p.y(), n.p.y()); // y-coordinate
+            if (comp < 0){ // If the point is less than the point of the node, go left
+                nearest = nearest(n.lb, p, nearest, xCord);
+                nearest = nearest(n.rt, p, nearest, xCord);
+            }
+            else if (comp >= 0){ // If the point is greater than the point of the node, go right
+                nearest = nearest(n.rt, p, nearest, xCord);
+                nearest = nearest(n.lb, p, nearest, xCord);
+            }
+        }
+        return nearest; // We found the nearest neighbor of point p
     }
 
     // unit testing (required)
