@@ -55,7 +55,7 @@ public class KdTreeST<Value> {
         topNode = put(topNode, p, val, true);
     }
 
-    public Node put(Node n, Point2D p, Value val, boolean xCord){
+    private Node put(Node n, Point2D p, Value val, boolean xCord){
         if (n == null){ // If there is no node, add a node
             nodeAmnt++;
             RectHV rect = new RectHV(xmin, ymin, xmax, ymax);
